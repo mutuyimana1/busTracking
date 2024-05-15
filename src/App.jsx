@@ -28,12 +28,14 @@ const App = () => {
     const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${location[0]}&lon=${location[1]}`);
     const data = await response.json();
     setCurrentLocationName(data.display_name);
+    console.log("data here",data)
   };
 
   return (
-    <div>
-      <h1>Real-time Ride-Share Tracking</h1>
-      <p>Current Location: {currentLocationName}</p>
+    <div className='mx-20 mt-10'>
+      <h1 className='text-center py-4 text-xl font-medium'>Real-time Ride-Share Tracking</h1>
+      <p className='text-center py-2 text-xl font-medium'>Nyabugogo - Kimironko</p>
+      <p className='pb-5 text-xl text-center'>Bus Location Now: <span className='text-base text-blue-600 font-medium'>{currentLocationName}</span> </p>
       <Map>
         {currentLocation && (
           <CustomMarker position={currentLocation} nextStop={[-1.939826787816454, 30.0445426438232]}>
